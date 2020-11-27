@@ -49,14 +49,34 @@ public class ClienteDAO {
 		
 	}
 	
-	public void update1(int cli) {
-		String jpql = "UPDATE public.cliente\r\n" + 
-				"	SET cli_cedula=?, cli_celular=?, cli_convencional=?, cli_dirprincipal=?, cli_dirreferencia=?, cli_dirsecundaria=?, cli_email=?, cli_latitud=?, cli_longitud=?, cli_nombre=?, antcliente_fk=?\r\n" + 
-				"	WHERE cli_id= :id;";
-		Query q = em.createQuery(jpql, Cliente.class);
-		q.setParameter("id", cli);
+	public void update1(Cliente cliente) {
+		String jpql = "UPDATE Cliente  c SET c.nombre= :nombre, c.email= :email,"
+				+ " c.convencional= :convencional,"
+				+ "c.celular= :celular, c.direccionPrincipal= :direccionPrincipal,"
+				+ "c.direccionSecundaria= :direccionSecundaria, "
+				+ "c.direccionReferencia= :direccionReferencia,"
+				+ "c.latitud= :latitud, c.longitud= :longitud WHERE c.id= :id";
+		Query q = em.createQuery(jpql);
+		q.setParameter("nombre", cliente.getNombre());
+		q.setParameter("email", cliente.getEmail());
+		q.setParameter("convencional", cliente.getConvencional());
+		q.setParameter("celular", cliente.getCelular());
+		q.setParameter("direccionPrincipal", cliente.getDireccionPrincipal());
+		q.setParameter("direccionSecundaria", cliente.getDireccionSecundaria());
+		q.setParameter("direccionReferencia", cliente.getDireccionReferencia());
+		q.setParameter("latitud", cliente.getLatitud());
+		q.setParameter("longitud", cliente.getLongitud());
+		q.setParameter("id", cliente.getId());
+		int d=q.executeUpdate();
+		System.out.println("vale vrg "+d);
+		
+		int id_cliente = cliente.getId();
+		String jpqlServico = "UPDATE  Servicio  SET ser_ip =  '"+cliente.getServicio().get(0).getIp()+"' where cliservicio_fk = "+ id_cliente +"";
+		q = em.createNativeQuery(jpqlServico);
+		int ipd = q.executeUpdate();
+		System.out.println("Ip actualizada "+ipd);
+		
 	}
-	
 	public void delete(int id) {
 		Cliente cli = read(id);
 		em.remove(cli);

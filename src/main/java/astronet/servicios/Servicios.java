@@ -205,6 +205,38 @@ public class Servicios {
 			
 		}
 	
+	@PUT
+	@Path("/actualizarCl")
+	@Produces("application/json")
+	@Consumes("application/json")
+	public  Response update1(Cliente  cli) {
+			
+			Response.ResponseBuilder builder = null;
+			Map<String, String> data = new HashMap<>();
+			Servicio ser=new Servicio();
+					
+
+			
+			try {
+							
+				
+					clion.actualizar1(cli);
+					
+			
+				data.put("Mensaje: ", "Dato actualizado");
+				builder = Response.status(Response.Status.OK).entity(data);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				data.put("Mensaje: ", e.getMessage());
+				builder = Response.status(Response.Status.BAD_REQUEST).entity(data);
+			}
+			
+			return builder.build();
+			
+			
+		}
+	
 	
 	@POST 
 	@Path("/create")
