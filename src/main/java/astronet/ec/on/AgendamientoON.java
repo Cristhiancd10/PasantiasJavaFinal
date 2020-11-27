@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import astronet.ec.dao.AgendamientoDAO;
 import astronet.ec.modelo.Agendamiento;
 
+
 @Stateless
 public class AgendamientoON {
 	
@@ -18,7 +19,10 @@ public class AgendamientoON {
 		agdao.save(ag);
 	}
 
-
+	public List<Agendamiento> getAgendamiento(String nombre) {
+			return agdao.getActividades(nombre);
+	}
+	
 	
 	
 	

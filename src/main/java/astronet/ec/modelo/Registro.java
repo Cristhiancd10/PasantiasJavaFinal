@@ -75,7 +75,7 @@ public class Registro implements Serializable {
 	 */
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "regagendamiento_fk")
-	//@JsonIgnore
+	@JsonIgnore
 	private List<Agendamiento> agendamiento;
 	
 	@Transient
@@ -180,7 +180,7 @@ public class Registro implements Serializable {
 	public String toString() {
 		return "Registro [id=" + id + ", fechaHora=" + fechaHora + ", observaciones=" + observaciones + ", problema="
 				+ problema + ", accion=" + accion + ", realizado=" + realizado + ", empleado=" + empleado + ", cliente="
-				+ cliente + ", agendamiento=" + agendamiento + "]";
+				+ cliente  + "]";
 	}
 
 

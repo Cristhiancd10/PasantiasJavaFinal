@@ -44,8 +44,17 @@ public class ClienteDAO {
 	}
 	
 	public void update(Cliente cli) {
+		//System.out.println("registro "+cli.getRegistro().get(0).toString());
 		em.merge(cli);
 		
+	}
+	
+	public void update1(int cli) {
+		String jpql = "UPDATE public.cliente\r\n" + 
+				"	SET cli_cedula=?, cli_celular=?, cli_convencional=?, cli_dirprincipal=?, cli_dirreferencia=?, cli_dirsecundaria=?, cli_email=?, cli_latitud=?, cli_longitud=?, cli_nombre=?, antcliente_fk=?\r\n" + 
+				"	WHERE cli_id= :id;";
+		Query q = em.createQuery(jpql, Cliente.class);
+		q.setParameter("id", cli);
 	}
 	
 	public void delete(int id) {
@@ -67,7 +76,8 @@ public class ClienteDAO {
 		for (Cliente cliente : clientes) {
 			cliente.getAntena().getId();
 			cliente.getServicio().get(0).getNumeroContrato();
-			//cliente.getServicio().size();
+			cliente.getServicio().size();
+			//cliente.getRegistro().get(0).getAccion();
 
 		}
 		return clientes;

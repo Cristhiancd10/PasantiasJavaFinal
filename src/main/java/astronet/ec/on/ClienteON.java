@@ -32,7 +32,8 @@ public class ClienteON {
 	public void actualizar (Cliente cli) {
 		clidao.update(cli);
 	}
-
+	
+	
 	public List<Cliente> getListadoCliente() {
 		return clidao.getCliente();
 	}

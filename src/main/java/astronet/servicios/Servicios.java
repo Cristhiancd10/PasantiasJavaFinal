@@ -16,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
+import astronet.ec.modelo.Agendamiento;
 import astronet.ec.modelo.Antena;
 import astronet.ec.modelo.Cliente;
 import astronet.ec.modelo.Empleado;
@@ -54,7 +55,7 @@ public class Servicios {
 	@Inject
 	private AntenaON anton;
 
-	
+	Registro registro;
 	/**
 	 * Metodo del login
 	 * @param un
@@ -109,6 +110,20 @@ public class Servicios {
 	}
 	
 	@GET
+	@Path("listRgVTE")
+	@Produces("application/json")
+		public List<Empleado> listarRgVTE(){
+		return empon.getEmpleado();
+	}
+	
+	@GET
+	@Path("listAG")
+	@Produces("application/json")
+	public List<Agendamiento> listarAgendamiento(@QueryParam("nombre") String nombre){
+		return  agon.getAgendamiento(nombre);
+	}
+	
+	@GET
 	@Path("/listarAn")
 	@Produces("application/json")
 	public List<Antena> getAntena(){
@@ -119,9 +134,12 @@ public class Servicios {
 	@Path("/buscarIdVis")
 	@Produces("application/json")
 	public Registro getBuscarVis(@QueryParam("id") int id){
+		//registro=regon.getListadoClienteId(id);
+			System.out.println("id"+id);
 			return regon.getListadoClienteId(id);
 		}
 	
+
 	@GET
 	@Path("/buscarInsId")
 	@Produces("application/json")
@@ -139,9 +157,14 @@ public class Servicios {
 			Response.ResponseBuilder builder = null;
 			Map<String, String> data = new HashMap<>();
 			Servicio ser=new Servicio();
+			Registro reg=new Registro();
+			reg.setCliente(cliente);
+			
+			
+
 			
 			try {
-				
+							
 				ser.setId(cliente.getServicio().get(0).getId());
 				ser.setNumeroContrato(cliente.getServicio().get(0).getNumeroContrato());
 				ser.setFechaContrato(cliente.getServicio().get(0).getFechaContrato());
@@ -158,13 +181,15 @@ public class Servicios {
 				ser.setIp(ser.getIp());
 				ser.setPassword(ser.getPassword());
 				ser.setObservaciones(ser.getObservaciones());
-				cliente.getServicio().get(0).setId(ser.getId());
+				System.out.println("hola funciona "+cliente.getId() +" hola 2 "+cliente);
+				//ser.getCliente().setId(cliente.getId());
 				
-					seron.actualizar(ser);
+				
+				seron.actualizar(ser);
+				//regon.actualizar(reg);
 					clion.actualizar(cliente);
-				
-				
-				
+					//regon.actualizar(reg);
+			
 				System.out.println(cliente.getNombre());
 				data.put("Mensaje: ", "Dato actualizado");
 				builder = Response.status(Response.Status.OK).entity(data);

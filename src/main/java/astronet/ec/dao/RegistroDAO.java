@@ -65,10 +65,12 @@ public class RegistroDAO {
 		List<Registro> registros = q.getResultList();
 		for (Registro registro : registros) {
 			registro.getCliente().getAntena().getId();
-			registro.getAgendamiento().size();
+			//registro.getAgendamiento().get(0).getFecha();
+			//registro.getAgendamiento().size();
 			registro.getCliente().getCedula();
 			registro.getEmpleado().getCelular();
-			registro.getCliente().getServicio().size();
+			registro.getCliente().getServicio().get(0).getIp();
+			//registro.getCliente().getServicio().size();
 		}
 		return registros;
 	}
@@ -85,7 +87,7 @@ public class RegistroDAO {
 		return clientes;
 	}
 	
-	
+		
 	public List<Registro> listarRegistros() {
 		String jpql = "SELECT reg FROM Registro reg ";
 		Query q = em.createQuery(jpql, Registro.class);

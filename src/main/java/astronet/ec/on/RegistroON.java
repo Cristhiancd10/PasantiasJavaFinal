@@ -48,8 +48,8 @@ public class RegistroON {
 	public Registro getListadoClienteId(int id){
 		return regdao.getBusquedaClienteId(id);
 	}
-
 	
+		
 	public Cliente consultarCliente(int codigoCliente) throws Exception {
 		
 		

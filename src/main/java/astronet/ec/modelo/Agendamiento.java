@@ -45,7 +45,7 @@ public class Agendamiento {
 	 */
 	@OneToOne
 	@JoinColumn(name="regagendamiento_fk")
-	@JsonIgnore
+	//@JsonIgnore
 	private Registro registro ;
 
 	public int getId() {
@@ -109,8 +109,9 @@ public class Agendamiento {
 	@Override
 	public String toString() {
 		return "Agendamiento [id=" + id + ", fecha=" + fecha + ", observaciones=" + observaciones + ", tecnicoAsigna="
-				+ tecnicoAsigna + ", tecnicoResponsable=" + tecnicoResponsable + "]";
+				+ tecnicoAsigna + ", tecnicoResponsable=" + tecnicoResponsable + ", registro=" + registro + "]";
 	}
+
 	
 	
 	
