@@ -23,6 +23,10 @@ public class AgendamientoON {
 			return agdao.getActividades(nombre);
 	}
 	
+	public void actualizar(Agendamiento ag) {
+		agdao.update(ag);
+	}
+
 	
 	
 	

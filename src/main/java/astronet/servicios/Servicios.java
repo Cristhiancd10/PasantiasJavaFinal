@@ -253,18 +253,16 @@ public class Servicios {
 	@Path("/actualizarVisita")
 	@Produces("application/json")
 	@Consumes("application/json")
-	public  Response updateReg(Registro registro) {
+	public  Response updateReg(Agendamiento agendamiento) {
 			
 			Response.ResponseBuilder builder = null;
 			Map<String, String> data = new HashMap<>();
 						
 						
 			try {
-				
-				
-			
-				regon.actualizar(registro);
-				System.out.println(registro.isRealizado());
+						
+				agon.actualizar(agendamiento);
+				System.out.println(agendamiento.isRealizado());
 				data.put("Mensaje: ", "Dato actualizado");
 				builder = Response.status(Response.Status.OK).entity(data);
 			} catch (Exception e) {

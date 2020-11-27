@@ -49,9 +49,6 @@ public class Registro implements Serializable {
 	@NotNull
 	private String accion;
 	
-	@Column(name = "reg_realizado")
-	@NotNull
-	private boolean realizado;
 	
 
 	/*
@@ -168,18 +165,11 @@ public class Registro implements Serializable {
 		this.accion = accion;
 	}
 
-	public boolean isRealizado() {
-		return realizado;
-	}
-
-	public void setRealizado(boolean realizado) {
-		this.realizado = realizado;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Registro [id=" + id + ", fechaHora=" + fechaHora + ", observaciones=" + observaciones + ", problema="
-				+ problema + ", accion=" + accion + ", realizado=" + realizado + ", empleado=" + empleado + ", cliente="
+				+ problema + ", accion=" + accion  + ", empleado=" + empleado + ", cliente="
 				+ cliente  + "]";
 	}
 

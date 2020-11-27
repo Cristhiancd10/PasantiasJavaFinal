@@ -36,6 +36,9 @@ public class Agendamiento {
 	@NotNull
 	private String tecnicoResponsable;
 	
+	@Column(name = "agd_realizado")
+	@NotNull
+	private boolean realizado;
 	
 	@Transient
 	private int codigoRegistroTemp;
@@ -105,11 +108,20 @@ public class Agendamiento {
 	public void setRegistro(Registro registro) {
 		this.registro = registro;
 	}
+	
+
+	public boolean isRealizado() {
+		return realizado;
+	}
+
+	public void setRealizado(boolean realizado) {
+		this.realizado = realizado;
+	}
 
 	@Override
 	public String toString() {
 		return "Agendamiento [id=" + id + ", fecha=" + fecha + ", observaciones=" + observaciones + ", tecnicoAsigna="
-				+ tecnicoAsigna + ", tecnicoResponsable=" + tecnicoResponsable + ", registro=" + registro + "]";
+				+ tecnicoAsigna + ", tecnicoResponsable=" + tecnicoResponsable + ", realizado=" + realizado + ", registro=" + registro + "]";
 	}
 
 	
