@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import astronet.ec.modelo.Agendamiento;
 import astronet.ec.modelo.Instalacion;
 import astronet.ec.modelo.Registro;
 
@@ -51,6 +52,22 @@ public class InstalacionDAO {
 			instalacion.getEmpleado().getNombre();
 		}
 		
+		return instalaciones;
+	}
+	
+	public List<Instalacion> getActividades(String nombre) {
+		String jpql = "SELECT ins FROM Instalacion ins  where ins.tecnico = :busqueda";
+		Query q = em.createQuery(jpql, Instalacion.class);
+		q.setParameter("busqueda", nombre);
+		List<Instalacion> instalaciones =  q.getResultList();
+		for(Instalacion instalacion: instalaciones) {
+//			agendamiento.setCodigoRegistroTemp(0);
+//			agendamiento.setTecnicoAsigna(null);
+			for (int j = 0; j < instalacion.getEmpleado().getRegistro().size() ; j++) {
+				//instalacion.getEmpleado().getRegistro().get(j).getCliente().getServicio().get(j).getNumeroContrato();
+			}
+			
+		}
 		return instalaciones;
 	}
 

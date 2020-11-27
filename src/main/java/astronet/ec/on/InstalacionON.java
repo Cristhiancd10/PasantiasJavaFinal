@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import astronet.ec.dao.InstalacionDAO;
+import astronet.ec.modelo.Agendamiento;
 import astronet.ec.modelo.Instalacion;
 import astronet.ec.modelo.Registro;
 
@@ -31,4 +32,9 @@ public List<Instalacion> getListadoInstalacion() {
 public void actualizar(Instalacion ins) {
 	insdao.update(ins);
 }
+
+public List<Instalacion> getInstalacion(String nombre) {
+	return insdao.getActividades(nombre);
+}
+
 }

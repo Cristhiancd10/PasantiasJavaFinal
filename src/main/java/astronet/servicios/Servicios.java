@@ -104,23 +104,23 @@ public class Servicios {
 	@GET
 	@Path("listRgVT")
 	@Produces("application/json")
-	
 	public List<Registro> listarRgVT(){
 		return regon.listadoRegistrosVT();
 	}
 	
-	@GET
-	@Path("listRgVTE")
-	@Produces("application/json")
-		public List<Empleado> listarRgVTE(){
-		return empon.getEmpleado();
-	}
-	
+		
 	@GET
 	@Path("listAG")
 	@Produces("application/json")
 	public List<Agendamiento> listarAgendamiento(@QueryParam("nombre") String nombre){
 		return  agon.getAgendamiento(nombre);
+	}
+	
+	@GET
+	@Path("listIns")
+	@Produces("application/json")
+	public List<Instalacion> listarInstalacion(@QueryParam("nombre") String nombre){
+		return inson.getInstalacion(nombre);
 	}
 	
 	@GET
